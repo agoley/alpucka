@@ -1,4 +1,4 @@
-var carousel = new SkCarousel(document.getElementsByClassName('animate'), 5000, adjust);
+var carousel = new PtCarousel(document.getElementsByClassName('animate'), 5000, adjust);
 
 /**
  * 

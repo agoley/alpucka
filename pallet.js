@@ -1,14 +1,14 @@
 /**
- * SPARK JS
- * SPARK is a simple and light weight JavaScript Framework for data binding and common web interfaces. Compatible with most browsers.
+ * pallet JS
+ * pallet is a simple and light weight JavaScript Framework for data binding and common web interfaces. Compatible with most browsers.
  * 
  * DEPENDENCIES
- * 1. spark-animate
+ * 1. pallet-animate
  * 
  */
 
 // VARIABLES
-var spark = {}; // Initialize the spark object.
+var pallet = {}; // Initialize the pallet object.
 
 // CLASSES
 /**
@@ -18,7 +18,7 @@ var spark = {}; // Initialize the spark object.
  * @param { Function } callback - Function to be called on each turn.
  * @param { boolean } auto - If true auto starts the carousel. Defaults to true.
  */
-function SkCarousel(mems, milliseconds, callback, auto) {
+function PtCarousel(mems, milliseconds, callback, auto) {
     this.members = mems;
     this.callback = callback;
     this.milliseconds = milliseconds;
@@ -33,8 +33,8 @@ function SkCarousel(mems, milliseconds, callback, auto) {
         if (this.isRunning || this.blurred) {
             return;
         }
-        if (!palletetown) {
-            console.error('spark: missing dependency spark-animate');
+        if (!pallet) {
+            console.error('pallet: missing dependency pallet-animate');
             return;
         }
         this.paused = false;
@@ -56,8 +56,8 @@ function SkCarousel(mems, milliseconds, callback, auto) {
             nextEl.style.display = 'inline';
 
             // Animate the current and next Elements.
-            palletetown.move(currEl, 'left', null, 2); // Moves the current element out of its container.
-            palletetown.move(nextEl, 'left', null, 2); // Moves the next element into the container.
+            ptanimate.move(currEl, 'left', null, 2); // Moves the current element out of its container.
+            ptanimate.move(nextEl, 'left', null, 2); // Moves the next element into the container.
 
             var me = that;
             setTimeout(function () {
@@ -144,9 +144,9 @@ function SkCarousel(mems, milliseconds, callback, auto) {
  * @param { HTMLElement } element 
  * @param { boolean } viewable 
  */
-function SkIf(element, viewable, display) {
+function PtIf(element, viewable, display) {
     if (!element) {
-        console.debug('Spark: SkIf failed, element doesnt exist.');
+        console.debug('pallet: SkIf failed, element doesnt exist.');
         return;        
     }
 
@@ -176,9 +176,9 @@ function SkIf(element, viewable, display) {
     this.reconcile();
 }
 
-function SkFor(element, arr, name) {
+function PtFor(element, arr, name) {
     if (!element) {
-        console.debug('Spark: SkFor failed, element doesnt exist.');
+        console.debug('pallet: SkFor failed, element doesnt exist.');
         return;        
     }
     this.parent = element.parentNode;
@@ -196,15 +196,15 @@ function SkFor(element, arr, name) {
 
         for (var i = 0; i < this.arr.length; i++) {
             var currNode = clone.cloneNode(clone);
-            ceruleancity.fillNode(currNode, this.arr[i], name)
+            pallet.fillNode(currNode, this.arr[i], name)
             this.parent.appendChild(currNode);
         }
     }
 }
 
-function SkBind(element, obj) {
+function PtBind(element, obj) {
     if (!element) {
-        console.debug('Spark: SkBind failed, element doesnt exist.');
+        console.debug('pallet: SkBind failed, element doesnt exist.');
         return;        
     }
     this.parent = element.parentNode;
@@ -218,7 +218,7 @@ function SkBind(element, obj) {
             this.parent.removeChild(this.parent.firstChild);
         }
         
-        ceruleancity.fillNode(clone, this.obj, name);
+        pallet.fillNode(clone, this.obj, name);
         this.parent.appendChild(clone);
     }
 }
@@ -226,19 +226,19 @@ function SkBind(element, obj) {
 
 // FUNCTIONS
 
-ceruleancity.fillNode = function (template, data, name) {
+pallet.fillNode = function (template, data, name) {
     var finalHTML = template.innerHTML;
 
     if (typeof data === 'object') {
 
         for (var f in data) {
-            finalHTML = ceruleancity.insert(finalHTML, f, data[f]);
+            finalHTML = pallet.insert(finalHTML, f, data[f]);
         }
     }
     template.innerHTML = finalHTML;
 }
 
-ceruleancity.insert = function (html, name, value) {
+pallet.insert = function (html, name, value) {
     var res = html;
 
     if (typeof value === 'boolean') {
