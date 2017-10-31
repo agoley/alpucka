@@ -1,0 +1,92 @@
+<!-- This template is strictly for demoing and testing the ceruleancity library -->
+<!DOCTYPE html>
+<html>
+<style>
+
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    #container {
+        width: 400px;
+        height: 400px;
+        position: relative;
+        background: yellow;
+    }
+
+    .member1 {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: red;
+        top: 0;
+        left: 0;
+    }
+
+    .member2 {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: green;
+        top: 0;
+        left: 400px;
+    }
+
+    .member3 {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: purple;
+        top: 0;
+        left: 400px;
+    }
+
+    .carousel-btn-list {
+        list-style: none;
+        position: relative;
+        z-index: 2;
+        color: #ffffff;
+        width: 100%;
+        text-align: center;
+        top: 15px;
+    }
+
+    .carousel-btn {
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .active-btn {
+        color: #000000;
+    }
+</style>
+
+<body>
+    <ul style="list-style: none;">
+        <li>
+            <button onclick="carousel.start()">Click Me to start carousel</button>
+        </li>
+        <li>
+            <button onclick="carousel.stop()">Click Me to stop carousel</button>
+        </li>
+    </ul>
+
+    <div id="container">
+        <div class="member1 animate"></div>
+        <div class="member2 animate"></div>
+        <div class="member3 animate"></div>  
+        
+        <ul class="carousel-btn-list">
+            <li class="active-btn carousel-btn" onclick="go(0)">&#8226; </li>
+            <li class="carousel-btn" onclick="go(1)">&#8226; </li>
+            <li class="carousel-btn"onclick="go(2)">&#8226; </li>
+        </ul>
+    </div>
+
+    <script src="palletetown.js"></script>
+    <script src="ceruleancity.js"></script>
+    <script src="example.js"></script>
+</body>
+
+</html>
