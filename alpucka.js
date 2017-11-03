@@ -1,14 +1,14 @@
 /**
- * pallet JS
- * pallet is a simple and light weight JavaScript Framework for data binding and common web interfaces. Compatible with most browsers.
+ * ALPUCKAJS
+ * alpucka is a lightweight JavaScript framework for common web interfaces. Compatible with most browsers.
  * 
  * DEPENDENCIES
- * 1. pallet-animate
+ * 1. alpucka-animate
  * 
  */
 
 // VARIABLES
-var pallet = {}; // Initialize the pallet object.
+var alpucka = {}; // Initialize the alpucka object.
 
 // CLASSES
 /**
@@ -18,7 +18,7 @@ var pallet = {}; // Initialize the pallet object.
  * @param { Function } callback - Function to be called on each turn.
  * @param { boolean } auto - If true auto starts the carousel. Defaults to true.
  */
-function PtCarousel(mems, milliseconds, callback, auto) {
+function AlCarousel(mems, milliseconds, callback, auto) {
     this.members = mems;
     this.callback = callback;
     this.milliseconds = milliseconds;
@@ -33,8 +33,8 @@ function PtCarousel(mems, milliseconds, callback, auto) {
         if (this.isRunning || this.blurred) {
             return;
         }
-        if (!pallet) {
-            console.error('pallet: missing dependency pallet-animate');
+        if (!alanimate) {
+            console.error('alpucka: missing dependency alpucka-animate.js');
             return;
         }
         this.paused = false;
@@ -50,14 +50,16 @@ function PtCarousel(mems, milliseconds, callback, auto) {
             var nextEl = that.members[nextId];
             that.currId = nextId;
 
+            if (!currEl) return;
+
             // Position the next Element to be animated.
             nextEl.style.top = currEl.clientTop + 'px';
             nextEl.style.left = currEl.clientWidth + 'px';
             nextEl.style.display = 'inline';
 
             // Animate the current and next Elements.
-            ptanimate.move(currEl, 'left', null, 2); // Moves the current element out of its container.
-            ptanimate.move(nextEl, 'left', null, 2); // Moves the next element into the container.
+            alanimate.move(currEl, 'left', null, 2); // Moves the current element out of its container.
+            alanimate.move(nextEl, 'left', null, 2); // Moves the next element into the container.
 
             var me = that;
             setTimeout(function () {
@@ -144,15 +146,15 @@ function PtCarousel(mems, milliseconds, callback, auto) {
  * @param { HTMLElement } element 
  * @param { boolean } viewable 
  */
-function PtIf(element, viewable, display) {
+function AlIf(element, viewable, display) {
     if (!element) {
-        console.debug('pallet: SkIf failed, element doesnt exist.');
+        console.debug('alpucka: AlIf failed, element doesnt exist.');
         return;        
     }
 
     this.element = element;
     this.viewable = viewable;
-    this.display = display || this.element.style.display || this.element.style.display || 'initial';
+    this.display = display || this.element.style.display || this.element.style.display || '';
 
     this.hide = function () {
         this.viewable = false;
@@ -176,9 +178,9 @@ function PtIf(element, viewable, display) {
     this.reconcile();
 }
 
-function PtFor(element, arr, name) {
+function AlFor(element, arr, name) {
     if (!element) {
-        console.debug('pallet: SkFor failed, element doesnt exist.');
+        console.debug('alpucka: AlFor failed, element doesnt exist.');
         return;        
     }
     this.parent = element.parentNode;
@@ -196,15 +198,15 @@ function PtFor(element, arr, name) {
 
         for (var i = 0; i < this.arr.length; i++) {
             var currNode = clone.cloneNode(clone);
-            pallet.fillNode(currNode, this.arr[i], name)
+            alpucka.fillNode(currNode, this.arr[i], name)
             this.parent.appendChild(currNode);
         }
     }
 }
 
-function PtBind(element, obj) {
+function AlBind(element, obj) {
     if (!element) {
-        console.debug('pallet: SkBind failed, element doesnt exist.');
+        console.debug('alpucka: SkBind failed, element doesnt exist.');
         return;        
     }
     this.parent = element.parentNode;
@@ -218,7 +220,7 @@ function PtBind(element, obj) {
             this.parent.removeChild(this.parent.firstChild);
         }
         
-        pallet.fillNode(clone, this.obj, name);
+        alpucka.fillNode(clone, this.obj, name);
         this.parent.appendChild(clone);
     }
 }
@@ -226,19 +228,19 @@ function PtBind(element, obj) {
 
 // FUNCTIONS
 
-pallet.fillNode = function (template, data, name) {
+alpucka.fillNode = function (template, data, name) {
     var finalHTML = template.innerHTML;
 
     if (typeof data === 'object') {
 
         for (var f in data) {
-            finalHTML = pallet.insert(finalHTML, f, data[f]);
+            finalHTML = alpucka.insert(finalHTML, f, data[f]);
         }
     }
     template.innerHTML = finalHTML;
 }
 
-pallet.insert = function (html, name, value) {
+alpucka.insert = function (html, name, value) {
     var res = html;
 
     if (typeof value === 'boolean') {

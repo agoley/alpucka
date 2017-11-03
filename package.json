@@ -1,28 +1,31 @@
 {
-  "name": "pallet",
+  "name": "alpucka",
   "version": "1.0.0",
-  "description": "Pallet is a simple and light weight JavaScript Framework for data binding and common web interfaces. Compatible with most browsers.",
-  "main": "pallete.js",
+  "description": "alpucka is a lightweight JavaScript framework for common web interfaces. Compatible with most browsers.",
+  "main": "alpucka.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/agoley/pallet.git"
+    "url": "git+https://github.com/agoley/alpucka.git"
   },
   "keywords": [
-    "spark",
-    "Framework",
-    "lightweight"
+    "web",
+    "framework",
+    "javascript",
+    "alpucka",
+    "animation",
+    "ajax"
   ],
   "author": "ajgoley",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/agoley/pallet/issues"
+    "url": "https://github.com/agoley/alpucka/issues"
   },
-  "homepage": "https://github.com/agoley/pallet#readme",
+  "homepage": "https://github.com/agoley/alpucka#readme",
   "dependencies": {
-    "pallet-animate": "^1.0.0",
-    "pallet-http": "^1.0.0"
+    "alpucka-animate": "^1.0.0",
+    "alpucka-http": "^1.0.0"
   }
 }
